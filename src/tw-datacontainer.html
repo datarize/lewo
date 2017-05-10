@@ -1,0 +1,18 @@
+'use strict';
+
+class DataContainer extends HTMLElement {
+
+  createElement(elem) {
+    //  basic echo
+    let event = new Event("createElement", elem);
+    this.dispatch(event);
+  }
+
+  removeElement(elem) {
+    //  basic echo
+    let event = new Event("removeElement", elem);
+    this.dispatch(event);
+  }
+}
+
+window.customElements.define('tw-datacontainer', DataContainer);
