@@ -1,0 +1,21 @@
+{
+  "name": "lewo",
+  "homepage": "https://github.com/datarize/lewo",
+  "authors": [
+    "datarize <datarize@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "^1.0.0"
+  }
+}
