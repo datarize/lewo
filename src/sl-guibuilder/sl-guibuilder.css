@@ -1,0 +1,48 @@
+ul {
+      list-style-type: none;
+      width: 20%;
+      position: absolute;
+      right: 0;
+    }
+
+    #ui {
+      min-height: 100%;
+      min-width: 80%;
+      position: absolute;
+    }
+
+    li>* {
+      max-width: 100px;
+      max-height: 20px;
+    }
+
+    #context{
+      visibility: hidden;
+      position: absolute;
+    }
+    #context > div {
+      position: absolute;
+      width: 25%;
+      height: 25%;
+      border-radius: 100%;
+    }
+    #context div:nth-child(1){
+            background: red;
+      top: 0;
+      left: 37.5%;
+    }
+    #context div:nth-child(2){
+               background: green;
+      top: 37.5%;
+      right: 0;
+    }
+    #context div:nth-child(3){
+              background: yellow;
+      bottom: 0;
+      left: 37.5%;
+    }
+    #context div:nth-child(4){
+              background: black;
+      top: 37.5%;
+      left: 0;
+    }

@@ -4,135 +4,21 @@
   <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css">
 
+  <link rel="import" href="sl-app/sl-app.html">
+
   <style>
     body {
       overflow: hidden;
-    }
-
-    ul {
-      list-style-type: none;
-      width: 20%;
-      position: absolute;
-      right: 0;
-    }
-
-    #ui {
-      min-height: 100%;
-      min-width: 80%;
-      position: absolute;
-    }
-
-    li>* {
-      max-width: 100px;
-      max-height: 20px;
-    }
-
-    #context{
-      visibility: hidden;
-      position: absolute;
-    }
-    #context > div {
-      position: absolute;
-      width: 25%;
-      height: 25%;
-      border-radius: 100%;
-    }
-    #context div:nth-child(1){
-            background: red;
-      top: 0;
-      left: 37.5%;
-    }
-    #context div:nth-child(2){
-               background: green;
-      top: 37.5%;
-      right: 0;
-    }
-    #context div:nth-child(3){
-              background: yellow;
-      bottom: 0;
-      left: 37.5%;
-    }
-    #context div:nth-child(4){
-              background: black;
-      top: 37.5%;
-      left: 0;
     }
   </style>
 </head>
 
 <body>
-
-  <div id="ui" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-  <ul id="ui-list">
-    <li> <button draggable="true" ondragstart="drag(event)">Button</button> </li>
-    <li>
-      <canvas>Canvas</canvas>
-    </li>
-    <li> <label>Label</label> </li>
-  </ul>
-
-<div id="context">
-  <div>X</div>
-  <div></div>
-  <div></div>
-  <div></div>
-</div>
-
+  <sl-app></sl-app>
   <script>
     addEventListener('WebComponentsReady', () => {
 
     });
-
-    function allowDrop(ev) {
-      ev.preventDefault();
-    }
-
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id || ev.target.tagName);
-    }
-
-    function ui_drop() { }
-    let id = 0;
-    function drop(ev) {
-      ev.preventDefault();
-      console.log(ev);
-
-      let data = ev.dataTransfer.getData("text");
-      console.log(data);
-      let ele = document.getElementById(data);
-      console.log('ele',ele);
-
-      if (ele) {
-        ele.style.left = ev.clientX - ele.offsetWidth/2;
-        ele.style.top = ev.clientY - ele.offsetHeight/2;
-      } else {
-        let list = document.getElementById('ui-list');
-        let orig = list.querySelector(data);
-        let clone = orig.cloneNode(true);
-        clone.id = ++id;
-
-        clone.addEventListener('contextmenu', event => {
-          // prevent the normal context menu from popping up
-          event.preventDefault();
-            
-            let c = document.querySelector('#context');
-            console.log(c, clone);
-            c.style.left = clone.style.left;
-            c.style.top = clone.style.top;
-            c.style.width = '200px';
-            c.style.height = '200px';
-
-            c.style.visibility = 'visible';
-        });
-
-        clone.style.position = 'absolute';
-        clone.style.left = ev.clientX - orig.offsetWidth/2;
-        clone.style.top = ev.clientY - orig.offsetHeight/2;
-
-        ev.target.appendChild(clone);
-
-      }
-    }
   </script>
 </body>
 
